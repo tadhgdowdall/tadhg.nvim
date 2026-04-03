@@ -189,11 +189,7 @@ return {
 			local function toggle_oil_sidebar()
 				local oil_win = find_oil_window()
 				if oil_win then
-					if oil_win == vim.api.nvim_get_current_win() then
-						vim.api.nvim_win_close(oil_win, true)
-					else
-						vim.api.nvim_set_current_win(oil_win)
-					end
+					vim.api.nvim_win_close(oil_win, true)
 					return
 				end
 
@@ -220,7 +216,7 @@ return {
 					["g?"] = { "actions.show_help", mode = "n" },
 					["<CR>"] = { select_in_sidebar, mode = "n", desc = "Open entry in main pane" },
 					["<C-p>"] = "actions.preview",
-					["<C-l>"] = "actions.refresh",
+					["gr"] = { "actions.refresh", mode = "n", desc = "Refresh file explorer" },
 					["-"] = { "actions.parent", mode = "n" },
 					["g\\"] = { "actions.toggle_trash", mode = "n" },
 					["a"] = { create_entry, mode = "n", desc = "Create file or folder" },
