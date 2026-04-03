@@ -27,6 +27,7 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 			vim.lsp.config("*", {
 				capabilities = capabilities,
 			})

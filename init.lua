@@ -1,3 +1,3 @@
-require("boat.settings")
-require("boat.remaps")
-require("boat.lazy")
+require("tadhg_windows.settings")
+require("tadhg_windows.remaps")
+require("tadhg_windows.lazy")

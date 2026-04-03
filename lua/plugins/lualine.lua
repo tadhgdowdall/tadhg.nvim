@@ -90,7 +90,29 @@ return {
 			ins_left({
 				-- mode component
 				function()
-					return ""
+					local mode_names = {
+						n = "NORMAL",
+						no = "NORMAL",
+						i = "INSERT",
+						ic = "INSERT",
+						v = "VISUAL",
+						V = "V-LINE",
+						[""] = "V-BLOCK",
+						c = "COMMAND",
+						cv = "COMMAND",
+						ce = "COMMAND",
+						R = "REPLACE",
+						Rv = "REPLACE",
+						s = "SELECT",
+						S = "S-LINE",
+						[""] = "S-BLOCK",
+						r = "PROMPT",
+						rm = "MORE",
+						["r?"] = "CONFIRM",
+						t = "TERMINAL",
+						["!"] = "SHELL",
+					}
+					return mode_names[vim.fn.mode()] or vim.fn.mode():upper()
 				end,
 				color = function()
 					-- auto change color according to neovims mode

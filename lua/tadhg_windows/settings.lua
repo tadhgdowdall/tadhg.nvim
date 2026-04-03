@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
-vim.opt.guicursor = ""
+vim.opt.guicursor =
+	"n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor-blinkwait300-blinkon200-blinkoff150,r-cr-o:hor20-Cursor/lCursor-blinkwait300-blinkon200-blinkoff150"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
@@ -19,7 +20,7 @@ vim.cmd([[
 ]])
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("boat-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("tadhg-windows-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank({
 			higroup = "YankHighlight",
