@@ -8,6 +8,7 @@ return {
 
 			local nvimtree = require("nvim-tree")
 			local api = require("nvim-tree.api")
+			local platform = require("tadhg.platform")
 
 			local function on_attach(bufnr)
 				api.config.mappings.default_on_attach(bufnr)
@@ -16,11 +17,8 @@ return {
 					local orig_input = vim.ui.input
 					vim.ui.input = function(opts, on_confirm)
 						return orig_input(opts, function(input)
-							if input and vim.fn.has("win32") == 1 then
-								input = input:gsub("/", "\\")
-							end
 							vim.ui.input = orig_input
-							on_confirm(input)
+							on_confirm(platform.normalize_user_path(input))
 						end)
 					end
 					api.fs.create()

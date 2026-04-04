@@ -5,11 +5,11 @@ return {
 			vim.keymap.set("n", "<leader>gs", ":0Git<CR>")
 			vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit!<CR>", { desc = "Git 3-way diff" })
 
-			local TadhgWindowsFugitive = vim.api.nvim_create_augroup("TadhgWindowsFugitive", {})
+			local TadhgFugitive = vim.api.nvim_create_augroup("TadhgFugitive", {})
 
 			local autocmd = vim.api.nvim_create_autocmd
 			autocmd("BufWinEnter", {
-				group = TadhgWindowsFugitive,
+				group = TadhgFugitive,
 				pattern = "*",
 				callback = function()
 					if vim.bo.ft ~= "fugitive" then

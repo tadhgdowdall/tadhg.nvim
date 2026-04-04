@@ -7,22 +7,14 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local oil = require("oil")
-			local is_windows = vim.fn.has("win32") == 1
 			local actions = require("oil.actions")
 			local columns = require("oil.columns")
 			local parser = require("oil.mutator.parser")
+			local platform = require("tadhg.platform")
 			local util = require("oil.util")
 
 			local function normalize_name(input)
-				if not input or input == "" then
-					return nil
-				end
-
-				if vim.fn.has("win32") == 1 then
-					input = input:gsub("/", "\\")
-				end
-
-				return vim.trim(input)
+				return platform.normalize_user_path(input)
 			end
 
 			local function get_name_range(bufnr, lnum)
@@ -90,8 +82,8 @@ return {
 						return
 					end
 
-					if entry.type == "directory" and not new_name:match("[/\\]$") then
-						new_name = new_name .. "/"
+					if entry.type == "directory" then
+						new_name = platform.ensure_directory_suffix(new_name)
 					end
 
 					if not replace_name_under_cursor(new_name) then
@@ -110,8 +102,8 @@ return {
 
 					local bufnr = vim.api.nvim_get_current_buf()
 					local lnum = vim.api.nvim_win_get_cursor(0)[1]
-					if name:match("[/\\]$") and vim.fn.has("win32") == 1 then
-						name = name:gsub("\\$", "/")
+					if name:match("[/\\]$") then
+						name = platform.ensure_directory_suffix(name:gsub("\\$", ""))
 					end
 					vim.api.nvim_buf_set_lines(bufnr, lnum, lnum, true, { name })
 					vim.api.nvim_win_set_cursor(0, { lnum + 1, 0 })

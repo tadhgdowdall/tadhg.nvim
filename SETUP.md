@@ -2,6 +2,8 @@
 
 This config works on both Windows and macOS.
 
+On macOS, path handling now defaults to POSIX-style separators. Windows-specific path conversion is only applied when Neovim is actually running on Windows.
+
 Clone location:
 
 - Windows: `%LOCALAPPDATA%\nvim`
@@ -115,6 +117,13 @@ $(brew --prefix)/opt/fzf/install
 ### 3. Clone the config
 
 ```bash
+git clone https://github.com/tadhgdowdall/tadhg.nvim.git ~/.config/nvim
+```
+
+If `~/.config` does not exist yet:
+
+```bash
+mkdir -p ~/.config
 git clone https://github.com/tadhgdowdall/tadhg.nvim.git ~/.config/nvim
 ```
 
