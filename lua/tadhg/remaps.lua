@@ -5,6 +5,8 @@ vim.keymap.set("n", "<Down>", "gj", { desc = "Move down through wrapped lines" }
 -- Quick indent
 vim.keymap.set("n", "<Left>", "<<", { noremap = true })
 vim.keymap.set("n", "<Right>", ">>", { noremap = true })
+vim.keymap.set("n", "<Tab>", ">>", { noremap = true, desc = "Indent line" })
+vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, desc = "Outdent line" })
 
 -- Groups and move text up and down in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

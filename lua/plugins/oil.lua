@@ -227,7 +227,6 @@ return {
 				use_default_keymaps = false,
 			})
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-			vim.keymap.set("n", "<leader>ee", toggle_oil_sidebar, { desc = "Toggle file explorer sidebar" })
 			vim.keymap.set("n", "<leader>ef", open_oil_fullscreen, { desc = "Open full file explorer" })
 		end,
 	},
