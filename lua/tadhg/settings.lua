@@ -20,7 +20,7 @@ vim.cmd([[
 ]])
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("tadhg-windows-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("tadhg-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank({
 			higroup = "YankHighlight",

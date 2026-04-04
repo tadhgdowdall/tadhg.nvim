@@ -1,4 +1,4 @@
-# tadhg-windows.nvim
+# tadhg.nvim
 
 > my neovim config
 

@@ -13,7 +13,7 @@ return {
 					find_opts = [[--type f --hidden --exclude .git --exclude node_modules --exclude .venv]],
 				},
 				grep = {
-					rg_opts = [[--color=always --hidden --smart-case --glob '!.git/*' --glob '!node_modules/*' --glob '!.venv/*']],
+					rg_opts = [[--column --line-number --no-heading --color=always --smart-case --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!.venv/*"]],
 				},
 				file_ignore_patterns = { ".git/", "node_modules/", ".venv/", "__pycache__/" },
 			})
@@ -23,7 +23,9 @@ return {
 				fzf.files, { desc = "[F]ind [F]iles" })
 
 			vim.keymap.set("n", "<leader>fw",
-				fzf.live_grep_native, { desc = "[F]ind [W]ord" })
+				function()
+					fzf.live_grep({ cwd = vim.fn.getcwd() })
+				end, { desc = "[F]ind [W]ord" })
 
 			vim.keymap.set("n", "<leader>fb", fzf.git_branches, { desc = "[F]ind by Git [B]ranches" })
 			vim.keymap.set("n", "<leader>fd", fzf.diagnostics_document, { desc = "[F]ind by Diagnostics" })

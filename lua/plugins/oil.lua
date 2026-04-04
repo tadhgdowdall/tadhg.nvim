@@ -208,7 +208,8 @@ return {
 
 			require("oil").setup({
 				default_file_explorer = true,
-				delete_to_trash = is_windows,
+				delete_to_trash = true,
+				prompt_save_on_select_new_entry = false,
 				view_options = {
 					show_hidden = true,
 				},
